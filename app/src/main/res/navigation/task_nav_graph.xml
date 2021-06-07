@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/task_nav_graph"
+    app:startDestination="@id/taskFragment">
+
+    <fragment
+        android:id="@+id/taskFragment"
+        android:name="com.codinginflow.mvvmtodo.ui.tasks.TaskFragment"
+        android:label="Tasks"
+        tools:layout="@layout/fragment_task">
+        <action
+            android:id="@+id/action_taskFragment_to_addTaskFragment"
+            app:destination="@id/addTaskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTaskFragment"
+        android:name="com.codinginflow.mvvmtodo.ui.tasks.AddTaskFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_add_task" >
+        <argument
+            android:name="task"
+            app:argType="com.codinginflow.mvvmtodo.data.Task"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+    <dialog
+        android:id="@+id/deleteAllCompleted"
+        android:name="com.codinginflow.mvvmtodo.ui.DeleteAllCompleted"
+        android:label="DeleteAllCompleted" />
+    <action android:id="@+id/action_global_deleteAllCompleted" app:destination="@id/deleteAllCompleted" />
+</navigation>
